@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Experiment - Commands Explained</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    pre { background: #f4f4f4; padding: .75rem; border-radius: 6px; overflow-x: auto; }
+    code { font-family: monospace; }
+  </style>
+</head>
+<body>
+  <h1>My Experiment</h1>
+  <p>This page explains every command that was run to create this project, back it up with git, and publish it to a new public GitHub repository.</p>
+
+  <h2>1. Check GitHub login and git identity</h2>
+  <pre><code>gh auth status
+git config --global user.name
+git config --global user.email</code></pre>
+  <p>Confirms the GitHub CLI (<code>gh</code>) is logged in and that git knows who is making commits.</p>
+
+  <h2>2. Create the folder</h2>
+  <pre><code>mkdir my_expiremnt
+cd my_expiremnt</code></pre>
+  <p><code>mkdir</code> creates the new folder and <code>cd</code> moves into it.</p>
+
+  <h2>3. Create this HTML file</h2>
+  <pre><code>cat &gt; index.html &lt;&lt;'EOF'
+...this page...
+EOF</code></pre>
+  <p>Writes <code>index.html</code> (this file) using a shell heredoc.</p>
+
+  <h2>4. Initialize git and commit (the backup)</h2>
+  <pre><code>git init -b main
+git add index.html
+git commit -m "Add index.html explaining the commands"</code></pre>
+  <p><code>git init</code> turns the folder into a repository on branch <code>main</code>, <code>git add</code> stages the file, and <code>git commit</code> saves a snapshot of it in history.</p>
+
+  <h2>5. Create the public GitHub repo and push</h2>
+  <pre><code>gh repo create my_expiremnt --public --source=. --remote=origin --push</code></pre>
+  <p>Creates a new <strong>public</strong> repository on GitHub, links it as the <code>origin</code> remote, and pushes the <code>main</code> branch there.</p>
+</body>
+</html>
