@@ -40,5 +40,14 @@ git commit -m "Add index.html explaining the commands"</code></pre>
   <h2>5. Create the public GitHub repo and push</h2>
   <pre><code>gh repo create my_expiremnt --public --source=. --remote=origin --push</code></pre>
   <p>Creates a new <strong>public</strong> repository on GitHub, links it as the <code>origin</code> remote, and pushes the <code>main</code> branch there.</p>
+  <h2>6. Enable GitHub Pages</h2>
+  <pre><code>gh api -X POST repos/neorai795/my_expiremnt/pages -f "source[branch]=main" -f "source[path]=/" --jq .html_url</code></pre>
+  <p>Turns on GitHub Pages for the <code>main</code> branch so this file is served at <a href="https://neorai795.github.io/my_expiremnt/">https://neorai795.github.io/my_expiremnt/</a>.</p>
+
+  <h2>7. Update the file and push again</h2>
+  <pre><code>git add index.html
+git commit -m "Document GitHub Pages step"
+git push</code></pre>
+  <p>Saves this added section and uploads it to GitHub.</p>
 </body>
 </html>
